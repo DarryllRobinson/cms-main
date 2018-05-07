@@ -1,18 +1,64 @@
 import React, { Component } from 'react';
-import logo from './logo.svg';
+import { Button, Nav, Navbar, NavItem } from 'react-bootstrap';
+import { Redirect } from "react-router-dom";
 import './App.css';
 
 class App extends Component {
   render() {
     return (
       <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <h1 className="App-title">Welcome to React</h1>
-        </header>
-        <p className="App-intro">
-          To get started, edit <code>src/App.js</code> and save to reload.
-        </p>
+      <Navbar fluid>
+        <Navbar.Header>
+          <Navbar.Brand>
+            <a href="#">Flying Crow Media Content Management System</a>
+          </Navbar.Brand>
+          <Button
+            bsStyle="primary"
+            className="btn-margin"
+            //onClick={this.goTo.bind(this, 'home')}
+          >
+            Home
+          </Button>
+          {
+            //!isAuthenticated() && (
+            (
+                <Button
+                  id="qsLoginBtn"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  //onClick={this.login.bind(this)}
+                >
+                  Log In
+                </Button>
+              )
+          }
+          {
+            //isAuthenticated() && (
+            (
+                <Button
+                  id="qsLogoutBtn"
+                  bsStyle="primary"
+                  className="btn-margin"
+                  //onClick={this.logout.bind(this)}
+                >
+                  Log Out
+                </Button>
+              )
+          }
+          {
+            //isAuthenticated() && (
+            (
+              <Button
+                bsStyle="primary"
+                className="btn-margin"
+                //onClick={this.goTo.bind(this, 'upload')}
+              >
+                Upload
+              </Button>
+            )
+          }
+        </Navbar.Header>
+      </Navbar>
       </div>
     );
   }
