@@ -18,12 +18,16 @@ app.listen(PORT, () => {
 });
 
 // catch-all for SPA server requests
-app.get('/*', function(req, res) {
+app.get('/callback', function(req, res) {
   res.sendFile(path.join(__dirname, '/index.html'), function(err) {
     if (err) {
       res.status(500).send(err)
     }
   })
+});
+
+app.post("/api/v1/user", (req, res) => {
+  res.json({ success: true });
 })
 
 module.exports = app;
