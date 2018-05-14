@@ -10,7 +10,7 @@
     "cloudinary": "^1.11.0",
     "cloudinary-core": "^2.5.0",
     "cloudinary-react": "^1.0.6",
-    "cloudinary-video-player": "^0.0.6",
+    "cloudinary-video-player": "^1.0.1",
     "cookie-parser": "~1.4.3",
     "cors": "^2.8.4",
     "errorhandler": "^1.5.0",
