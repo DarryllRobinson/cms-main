@@ -1,6 +1,6 @@
-import decode from 'jwt-decode';
+//import decode from 'jwt-decode';
 import { browserHistory } from 'react-router';
-import auth0 from 'auth0-js';
+//import auth0 from 'auth0-js';
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
@@ -24,12 +24,16 @@ const SCOPE = 'openid';
 const AUDIENCE = 'http://www.stillproud.com/';
 */
 
-var auth = new auth0.WebAuth({
+/*var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
   domain: CLIENT_DOMAIN
 });
-
+*/
 export function login() {
+  // does anything actually need to go here?
+};
+
+/*export function login_1() {
   auth.authorize({
     responseType: 'token id_token',
     redirectUri: REDIRECT,
@@ -37,7 +41,7 @@ export function login() {
     scope: SCOPE
   });
 }
-
+*/
 export function logout() {
   clearIdToken();
   clearAccessToken();
@@ -74,27 +78,37 @@ function getParameterByName(name) {
 
 // Get and store access_token in local storage
 export function setAccessToken() {
-  let accessToken = getParameterByName('access_token');
+  //let accessToken = getParameterByName('access_token');
+  alert('setAccessToken');
+  let accessToken = '123456';
   localStorage.setItem(ACCESS_TOKEN_KEY, accessToken);
 }
 
 // Get and store id_token in local storage
 export function setIdToken() {
-  let idToken = getParameterByName('id_token');
+  //let idToken = getParameterByName('id_token');
+  alert('setIdToken');
+  let idToken = '987654321';
   localStorage.setItem(ID_TOKEN_KEY, idToken);
 }
 
 export function isLoggedIn() {
+  return true;
+}
+
+export function isLoggedIn_1() {
   const idToken = getIdToken();
   return !!idToken && !isTokenExpired(idToken);
 }
 
 function getTokenExpirationDate(encodedToken) {
-  const token = decode(encodedToken);
-  if (!token.exp) { return null; }
+  //alert('decode(encodedToken): ' + decode(encodedToken));
+  //const token = decode(encodedToken);
+  //const token = decode(encodedToken);
+  //if (!token.exp) { return null; }
 
   const date = new Date(0);
-  date.setUTCSeconds(token.exp);
+  //date.setUTCSeconds(token.exp);
 
   return date;
 }

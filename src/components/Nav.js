@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router';
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+//import { login, logout, isLoggedIn } from '../utils/AuthService';
+import { isLoggedIn } from '../utils/AuthService';
 import '../App.css';
 
 class Nav extends Component {
@@ -25,17 +26,22 @@ class Nav extends Component {
              ( isLoggedIn() ) ? <Link to="/screen">Screen Display</Link> :  ''
             }
           </li>
-        </ul>
+          <li>
+            {
+             ( isLoggedIn() ) ? <Link to="/scheduler">Scheduler</Link> :  ''
+            }
+          </li>
+        </ul>{/*
         <ul className="nav navbar-nav navbar-right">
           <li>
-           {/*
+           {
              (isLoggedIn()) ? ( <button className="btn btn-danger log" onClick={() => logout()}>Log out </button> ) : ( <button className="btn btn-info log" onClick={() => login()}>Log In</button> )
-           */
 
-            ( !isLoggedIn() ) ? <Link to="/login">Log In</Link> :  ''
+
+            ( !isLoggedIn() ) ? <Link to="/login">Log In</Link> :  <Link to="/logout">Log Out</Link>
           }
           </li>
-        </ul>
+        </ul>*/}
       </nav>
     );
   }

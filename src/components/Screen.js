@@ -1,5 +1,10 @@
 import React, { Component } from 'react';
 import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
+import cloudinary from 'cloudinary-core';
+import 'cloudinary-video-player';
+
+// CSS
+import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
 
 class Screen extends Component {
 
@@ -7,13 +12,12 @@ class Screen extends Component {
 
     return (
       <div>
-        <CloudinaryContext cloudName="flycrow">
-          <div className="embed-responsive embed-responsive-4by3" >
-            <Video id="myVideo" publicId="test/vqx5qsaltgwwoocpgbb2" autoPlay>
-              <Transformation width="250" height="150" crop="pad" />
-            </Video>
-          </div>
-        </CloudinaryContext>
+        <video
+          id="my-demo-player"
+          controls
+          autoplay
+          class="cld-video-player">
+        </video>
       </div>
     );
   }
