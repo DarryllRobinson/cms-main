@@ -8,7 +8,7 @@ class Display extends Component {
   state = { videos: [] };
 
   getVideos() {
-    axios.get('https://res.cloudinary.com/flycrow/video/list/fcm.json')
+    axios.get('https://res.cloudinary.com/flycrow/video/list/rpns.json')
           .then(res => {
             console.log(res.data.resources);
             this.setState({ videos: res.data.resources.splice(0,12)});

@@ -7,7 +7,7 @@ class Upload extends Component {
     window.cloudinary.openUploadWidget(
       { cloud_name: 'flycrow',
         upload_preset: 'ubx3ytwg',
-        tags: ['fcm'],
+        tags: ['rpns'],
         sources: ['local', 'url', 'google_photos', 'facebook', 'image_search']
       },
       function(error, result) {
@@ -25,7 +25,7 @@ class Upload extends Component {
 
         <div className="col-sm-12">
           <div className="jumbotron text-center">
-            <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Video</button>
+            <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Content</button>
           </div>
         </div>
       </div>
