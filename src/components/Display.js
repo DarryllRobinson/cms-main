@@ -56,7 +56,6 @@ class Display extends Component {
 
         <div className="col-sm-12">
           <input placeholder="Select Content Tag" ></input>
-          <button onClick={} className="btn btn-lg btn-info">View Library</button>
           <CloudinaryContext cloudName="flycrow">
             { videos.map((data, index) => (
                 <div className="col-sm-4" key={index}>
