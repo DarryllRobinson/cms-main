@@ -4,20 +4,40 @@ import { CloudinaryContext, Video } from 'cloudinary-react';
 import axios from 'axios';
 
 class Display extends Component {
+  constructor(props) {
+    super(props);
 
-  state = { videos: [] };
+    this.state = {
+      tag: 'fcm',
+      videos: []
+    };
 
-  getVideos() {
-    axios.get('https://res.cloudinary.com/flycrow/video/list/rpns.json')
+    this.handleTagChange = this.handleTagChange.bind(this);
+    this.getVideos = this.getVideos.bind(this);
+  }
+
+  handleTagChange(event) {
+    console.log('tag before: ', this.state.tag);
+    // updating [tags] in state to send with upload request
+    this.setState({ tag: event.target.value });
+    /*this.setState(state => {
+      state.tag = event.target.value;
+      return state;
+    });*/
+    console.log('tag after: ', this.state.tag);
+  };
+
+  getVideos(newTag) {
+    axios.get('https://res.cloudinary.com/flycrow/video/list/' + this.state.tag + '.json')
           .then(res => {
             console.log(res.data.resources);
             this.setState({ videos: res.data.resources.splice(0,12)});
     });
   }
 
-  componentDidMount() {
+  /*componentDidMount() {
     this.getVideos();
-  }
+  }*/
 
   render() {
 
@@ -30,6 +50,8 @@ class Display extends Component {
         <hr/>
 
         <div className="col-sm-12">
+          <input placeholder="Select Content Tag" onChange={this.handleTagChange}></input>
+          <button onClick={this.getVideos} className="btn btn-lg btn-info">View Library</button>
           <CloudinaryContext cloudName="flycrow">
             { videos.map((data, index) => (
                 <div className="col-sm-4" key={index}>

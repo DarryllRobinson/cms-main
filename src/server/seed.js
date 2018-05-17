@@ -10,10 +10,10 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='User'", (err
   if (table) {
     db.serialize(function() {
       let userId;
-      db.run("INSERT INTO user (username, password, firstname, surname, email) " +
-        "VALUES ('user1', 'pass1', 'Darryll', 'Robinson', 'd@fcm.co.za')");
-        db.run("INSERT INTO user (username, password, firstname, surname, email) " +
-          "VALUES ('user2', 'pass2', 'Brendan', 'Ballantine', 'b@fcm.co.za')"), function(error) {
+      db.run("INSERT INTO user (username, password, firstname, surname, email, cell) " +
+        "VALUES ('user1', 'pass1', 'Darryll', 'Robinson', 'd@fcm.co.za', '082')");
+        db.run("INSERT INTO user (username, password, firstname, surname, email, cell) " +
+          "VALUES ('user2', 'pass2', 'Brendan', 'Ballantine', 'b@fcm.co.za', '073')"), function(error) {
             if (error) {
               throw new Error(error);
             }
@@ -33,10 +33,10 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Unit'", (err
   if (table) {
     db.serialize(function() {
       let unitId;
-      db.run("INSERT INTO unit (screen_size, orientation, sound, touch) " +
-        "VALUES (49, 'landscape', 'false', 'false')");
-        db.run("INSERT INTO unit (screen_size, orientation, sound, touch) " +
-          "VALUES (49, 'landscape', 'true', 'false')"), function(error) {
+      db.run("INSERT INTO unit (screen_size, orientation, resolution, sound, touch, location, wifi, data) " +
+        "VALUES (49, 'landscape', '680x480', 'false', 'false', 'Maponya', 'false', 'true')");
+        db.run("INSERT INTO unit (screen_size, orientation, resolution, sound, touch, location, wifi, data) " +
+          "VALUES (49, 'landscape', '680x480', 'false', 'false', 'Southgate', 'true', 'false')"), function(error) {
             if (error) {
               throw new Error(error);
             }

@@ -38,21 +38,29 @@ unitsRouter.get('/:unitId', (req, res, next) => {
 unitsRouter.post('/', (req, res, next) => {
   const screen_size = req.body.unit.screen_size,
         orientation = req.body.unit.orientation,
+        resolution = req.body.unit.resolution,
         sound = req.body.unit.sound,
         touch = req.body.unit.touch,
-        is_current_unit = req.body.unit.is_current_unit === 0 ? 0 : 1;
-  if (!screen_size || !orientation || !sound || !touch) {
+        location = req.body.unit.location,
+        wifi = req.body.unit.wifi,
+        data = req.body.unit.data,
+        is_active_unit = req.body.unit.is_active_unit === 0 ? 0 : 1;
+  if (!screen_size || !orientation || !resolution || !sound || !touch || !location || !wifi || !data) {
     return res.sendStatus(400);
   }
 
-  const sql = 'INSERT INTO unit (screen_size, orientation, sound, touch, is_current_unit)' +
-      'VALUES ($screen_size, $orientation, $sound, $touch, $is_current_unit)';
+  const sql = 'INSERT INTO unit (screen_size, orientation, resolution, sound, touch, location, wifi, data, is_ative_unit)' +
+      'VALUES ($screen_size, $orientation, $resolution, $sound, $touch, $location, $wifi, $data, $is_active_unit)';
   const values = {
     $screen_size: screen_size,
     $orientation: orientation,
+    $resolution: resolution,
     $sound: sound,
     $touch: touch,
-    $is_current_unit: is_current_unit
+    $location: location,
+    $wifi: wifi,
+    $data: data,
+    $is_active_unit: is_active_unit
   };
 
   db.run(sql, values, function(error) {
@@ -70,22 +78,31 @@ unitsRouter.post('/', (req, res, next) => {
 unitsRouter.put('/:unitId', (req, res, next) => {
   const screen_size = req.body.unit.screen_size,
         orientation = req.body.unit.orientation,
+        resolution = req.body.unit.resolution,
         sound = req.body.unit.sound,
         touch = req.body.unit.touch,
-        is_current_unit = req.body.unit.is_current_unit === 0 ? 0 : 1;
-  if (!screen_size || !orientation || !sound || !touch) {
+        location = req.body.unit.location,
+        wifi = req.body.unit.wifi,
+        data = req.body.unit.data,
+        is_active_unit = req.body.unit.is_active_unit === 0 ? 0 : 1;
+  if (!screen_size || !orientation || !resolution || !sound || !touch || !location || !wifi || !data) {
     return res.sendStatus(400);
   }
 
   const sql = 'UPDATE unit SET screen_size = $screen_size, orientation = $orientation, ' +
-      'sound = $sound, touch = $touch, is_current_unit = $is_current_unit ' +
+      'resolution = $resolution, sound = $sound, touch = $touch, $location = location, ' +
+      '$wifi = wifi, $data = data, is_active_unit = $is_active_unit ' +
       'WHERE unit.id = $unitId';
   const values = {
     $screen_size: screen_size,
     $orientation: orientation,
+    $resolution: resolution,
     $sound: sound,
     $touch: touch,
-    $is_current_unit: is_current_unit,
+    $location: location,
+    $wifi: wifi,
+    $data: data,
+    $is_active_unit: is_active_unit,
     $unitId: req.params.unitId
   };
 

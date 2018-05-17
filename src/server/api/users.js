@@ -61,19 +61,21 @@ usersRouter.post('/', (req, res, next) => {
         firstname = req.body.user.firstname,
         surname = req.body.user.surname,
         email = req.body.user.email,
+        cell = req.body.user.cell,
         is_current_user = req.body.user.is_current_user === 0 ? 0 : 1;
-  if (!username || !password || !firstname || !surname ||!email) {
+  if (!username || !password || !firstname || !surname ||!email ||!cell) {
     return res.sendStatus(400);
   }
 
-  const sql = 'INSERT INTO user (username, password, firstname, surname, email, is_current_user)' +
-      'VALUES ($username, $password, $firstname, $surname, $email, $is_current_user)';
+  const sql = 'INSERT INTO user (username, password, firstname, surname, email, cell, is_current_user)' +
+      'VALUES ($username, $password, $firstname, $surname, $email, $cell $is_current_user)';
   const values = {
     $username: username,
     $password: password,
     $firstname: firstname,
     $surname: surname,
     $email: email,
+    $cell: cell,
     $is_current_user: is_current_user
   };
 
@@ -95,13 +97,14 @@ usersRouter.put('/:userId', (req, res, next) => {
         firstname = req.body.user.firstname,
         surname = req.body.user.surname,
         email = req.body.user.email,
+        cell = req.body.user.cell,
         is_current_user = req.body.user.is_current_user === 0 ? 0 : 1;
-  if (!username || !password || !firstname || !surname ||!email) {
+  if (!username || !password || !firstname || !surname ||!email ||!cell) {
     return res.sendStatus(400);
   }
 
   const sql = 'UPDATE user SET username = $username, password = $password, firstname = $firstname, ' +
-      'surname = $surname, email = $email, is_current_user = $is_current_user ' +
+      'surname = $surname, email = $email, cell = $cell, is_current_user = $is_current_user ' +
       'WHERE user.id = $userId';
   const values = {
     $username: username,
@@ -109,6 +112,7 @@ usersRouter.put('/:userId', (req, res, next) => {
     $firstname: firstname,
     $surname: surname,
     $email: email,
+    $cell: cell,
     $is_current_user: is_current_user,
     $userId: req.params.userId
   };
