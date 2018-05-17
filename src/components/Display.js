@@ -38,6 +38,9 @@ class Display extends Component {
 =======
   getVideos() {
     axios.get('https://res.cloudinary.com/flycrow/video/list/fcm.json')
+<<<<<<< HEAD
+>>>>>>> parent of 031d5bf... Playlist working
+=======
 >>>>>>> parent of 031d5bf... Playlist working
           .then(res => {
             console.log(res.data.resources);

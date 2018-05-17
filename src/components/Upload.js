@@ -23,9 +23,12 @@ class Upload extends Component {
       { //cloud_name: 'flycrow',
         upload_preset: 'ubx3ytwg',
 <<<<<<< HEAD
+<<<<<<< HEAD
         tags: this.state.tag,
         sources: ['local', 'url']
 =======
+=======
+>>>>>>> parent of 031d5bf... Playlist working
         tags: ['fcm'],
         sources: ['local', 'url', 'google_photos', 'facebook', 'image_search']
 >>>>>>> parent of 031d5bf... Playlist working
@@ -46,8 +49,12 @@ class Upload extends Component {
         <div className="col-sm-12">
           <div className="jumbotron text-center">
 <<<<<<< HEAD
+<<<<<<< HEAD
             <input placeholder="Content Tag" onChange={this.handleTagChange} />
             <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Content</button>
+=======
+            <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Video</button>
+>>>>>>> parent of 031d5bf... Playlist working
 =======
             <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Video</button>
 >>>>>>> parent of 031d5bf... Playlist working

@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 <<<<<<< HEAD
+<<<<<<< HEAD
 //import { CloudinaryContext, Video } from 'cloudinary-react';
 //import {Cloudinary, Configuration, Transformation, Util} from 'cloudinary-core';
 //import Video from './Cloudinary/Video';
@@ -54,10 +55,21 @@ class Screen extends Component {
 import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
 import cloudinary from 'cloudinary-core';
 import 'cloudinary-video-player';
+=======
+import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
+import cloudinary from 'cloudinary-core';
+import 'cloudinary-video-player';
 
 // CSS
 import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
 
+class Screen extends Component {
+>>>>>>> parent of 031d5bf... Playlist working
+
+// CSS
+import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
+
+<<<<<<< HEAD
 class Screen extends Component {
 >>>>>>> parent of 031d5bf... Playlist working
 
@@ -79,12 +91,19 @@ class Screen extends Component {
           </video>
         </div>
 =======
+=======
+    return (
+      <div>
+>>>>>>> parent of 031d5bf... Playlist working
         <video
           id="my-demo-player"
           controls
           autoplay
           class="cld-video-player">
         </video>
+<<<<<<< HEAD
+>>>>>>> parent of 031d5bf... Playlist working
+=======
 >>>>>>> parent of 031d5bf... Playlist working
       </div>
     );
