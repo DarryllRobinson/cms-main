@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+<<<<<<< HEAD
 //import { CloudinaryContext, Video } from 'cloudinary-react';
 //import {Cloudinary, Configuration, Transformation, Util} from 'cloudinary-core';
 //import Video from './Cloudinary/Video';
@@ -49,11 +50,22 @@ class Screen extends Component {
         console.log('res: ', res);
     });
   }
+=======
+import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
+import cloudinary from 'cloudinary-core';
+import 'cloudinary-video-player';
+
+// CSS
+import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
+
+class Screen extends Component {
+>>>>>>> parent of 031d5bf... Playlist working
 
   render() {
 
     return (
       <div>
+<<<<<<< HEAD
         <Nav />
         <h3 className="text-center">Screen Display</h3>
         <hr/>
@@ -66,6 +78,14 @@ class Screen extends Component {
             className="cld-video-player cld-video-player-skin-dark">
           </video>
         </div>
+=======
+        <video
+          id="my-demo-player"
+          controls
+          autoplay
+          class="cld-video-player">
+        </video>
+>>>>>>> parent of 031d5bf... Playlist working
       </div>
     );
   }

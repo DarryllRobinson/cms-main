@@ -6,14 +6,14 @@ const ACCESS_TOKEN_KEY = 'access_token';
 
 
 // *********************** DEVELOPMENT
-/*
+
 const CLIENT_ID = 'W9w3YzgENsp1zkT40TAUr7VxYVcyj6iN';
 const CLIENT_DOMAIN = 'fcmcms.eu.auth0.com';
 //const REDIRECT = 'http://localhost:3000/callback';
 const REDIRECT = 'http://localhost:8080/callback';
 const SCOPE = 'openid';
 const AUDIENCE = 'http://www.stillproud.com/';
-*/
+
 
 // *********************** PRODUCTION
 /*
@@ -71,11 +71,11 @@ function clearAccessToken() {
 }
 
 // Helper function that will allow us to extract the access_token and id_token
-/*function getParameterByName(name) {
+function getParameterByName(name) {
   let match = RegExp('[#&]' + name + '=([^&]*)').exec(window.location.hash);
   return match && decodeURIComponent(match[1].replace(/\+/g, ' '));
 }
-*/
+
 // Get and store access_token in local storage
 export function setAccessToken() {
   //let accessToken = getParameterByName('access_token');

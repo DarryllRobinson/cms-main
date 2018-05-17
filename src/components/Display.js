@@ -12,6 +12,7 @@ class Display extends Component {
       videos: []
     };
 
+<<<<<<< HEAD
     this.handleTagChange = this.handleTagChange.bind(this);
     this.getVideos = this.getVideos.bind(this);
   }
@@ -34,6 +35,10 @@ class Display extends Component {
     });
     console.log('tag after: ', this.state.tag);
     axios.get('https://res.cloudinary.com/flycrow/video/list/' + this.state.tag + '.json')
+=======
+  getVideos() {
+    axios.get('https://res.cloudinary.com/flycrow/video/list/fcm.json')
+>>>>>>> parent of 031d5bf... Playlist working
           .then(res => {
             console.log(res.data.resources);
             this.setState({ videos: res.data.resources.splice(0,12)});
