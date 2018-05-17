@@ -1,24 +1,28 @@
 import React, { Component } from 'react';
-<<<<<<< HEAD
-<<<<<<< HEAD
 //import { CloudinaryContext, Video } from 'cloudinary-react';
 //import {Cloudinary, Configuration, Transformation, Util} from 'cloudinary-core';
 //import Video from './Cloudinary/Video';
 import Nav from './Nav';
+import Video from 'cloudinary-video-player';
 import cloudinary from "cloudinary-core";
 import axios from 'axios';
 
 class Screen extends Component {
-  constructor(props) {
-    super(props);
 
-    this.state = {
-      tag: 'retail'
-    };
+  state = {
+    videos: []
+  };
 
+  getVideos() {
+    axios.get('https://res.cloudinary.com/flycrow/video/list/fcm.json')
+          .then(res => {
+            console.log(res.data.resources);
+            this.setState({ videos: res.data.resources.splice(0,12)});
+    });
   }
 
   componentDidMount() {
+    //this.getVideos();
     // this.getIPstack(); // For when we want the device location info
     this.getPlaylist();
   }
@@ -29,13 +33,18 @@ class Screen extends Component {
       playedEventTimes: [1]
     });
 
-    player.playlistByTag(this.state.tag, {
+    player.playlistByTag('rpns', {
       //sourceParams: { angle: 13 },
       autoAdvance: 0,
       repeat: true
     }).then(function(player)
       {
-        console.log('Playlist loaded');
+        //const divElem = document.querySelector("div#playlist-data");
+        const list = player.playlist().list().map(function(source) {
+          return source.publicId()
+        }).join(', ');
+
+        //divElem.innerText = 'Playlist: ' + list;
       });
 
       // Fighting to get the stupid thing to play in full screen without intervention
@@ -51,60 +60,26 @@ class Screen extends Component {
         console.log('res: ', res);
     });
   }
-=======
-import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
-import cloudinary from 'cloudinary-core';
-import 'cloudinary-video-player';
-=======
-import { CloudinaryContext, Transformation, Video } from 'cloudinary-react';
-import cloudinary from 'cloudinary-core';
-import 'cloudinary-video-player';
-
-// CSS
-import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
-
-class Screen extends Component {
->>>>>>> parent of 031d5bf... Playlist working
-
-// CSS
-import '../../node_modules/cloudinary-video-player/dist/cld-video-player.min.css';
-
-<<<<<<< HEAD
-class Screen extends Component {
->>>>>>> parent of 031d5bf... Playlist working
 
   render() {
 
+    const { videos } = this.state;
+
     return (
       <div>
-<<<<<<< HEAD
         <Nav />
-        <h3 className="text-center">Screen Display</h3>
+        <h3 className="text-center">Content Library</h3>
         <hr/>
 
         <div className="cloudPlayer">
           <video
             id="example-player"
-            controls
-            autoPlay
+            //controls
+            //autoPlay
             className="cld-video-player cld-video-player-skin-dark">
           </video>
+          {/*<div className="playlist-data"></div>*/}
         </div>
-=======
-=======
-    return (
-      <div>
->>>>>>> parent of 031d5bf... Playlist working
-        <video
-          id="my-demo-player"
-          controls
-          autoplay
-          class="cld-video-player">
-        </video>
-<<<<<<< HEAD
->>>>>>> parent of 031d5bf... Playlist working
-=======
->>>>>>> parent of 031d5bf... Playlist working
       </div>
     );
   }
