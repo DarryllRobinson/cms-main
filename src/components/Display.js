@@ -30,9 +30,20 @@ class Display extends Component {
   getVideos(newTag) {
     axios.get('https://res.cloudinary.com/flycrow/video/list/' + this.state.tag + '.json')
           .then(res => {
-            console.log(res.data.resources);
+            console.log(JSON.stringify(res.data.resources));
             this.setState({ videos: res.data.resources.splice(0,12)});
     });
+  }
+
+  static getDerivedStateFromProps(nextProps, prevState) {
+    if (prevState.tag !== nextProps.tag) {
+      return {
+        tag: nextProps.tag
+      };
+    }
+
+    // Return null to indicate no change to state
+    return null;
   }
 
   /*componentDidMount() {

@@ -2,13 +2,34 @@ import React, { Component } from 'react';
 import Nav from './Nav';
 
 class Upload extends Component {
+  constructor(props) {
+    super(props);
+
+    this.state = {
+      tag: 'n/a'
+    };
+
+    this.handleTagChange = this.handleTagChange.bind(this);
+    this.uploadWidget = this.uploadWidget.bind(this);
+  }
+
+  handleTagChange(event) {
+    console.log('tag before: ', this.state.tag);
+    // updating [tags] in state to send with upload request
+    this.setState({ tag: event.target.value });
+    /*this.setState(state => {
+      state.tag = event.target.value;
+      return state;
+    });*/
+    console.log('tag after: ', this.state.tag);
+  };
 
   uploadWidget = () => {
     window.cloudinary.openUploadWidget(
       { cloud_name: 'flycrow',
         upload_preset: 'ubx3ytwg',
-        tags: ['rpns'],
-        sources: ['local', 'url', 'google_photos', 'facebook', 'image_search']
+        tags: this.state.tag,
+        sources: ['local', 'url']
       },
       function(error, result) {
           console.log("This is the result of the last upload", result);
@@ -24,7 +45,7 @@ class Upload extends Component {
         <hr/>
 
         <div className="col-sm-12">
-          <div className="jumbotron text-center">
+          <div className="jumbotron text-center"><input placeholder="Content Tag" onChange={this.handleTagChange}></input>
             <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Content</button>
           </div>
         </div>
