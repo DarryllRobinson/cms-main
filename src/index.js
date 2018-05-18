@@ -4,6 +4,7 @@ import Upload from './components/Upload';
 import Display from './components/Display';
 import Screen from './components/Screen';
 import Scheduler from './components/Scheduler/Scheduler';
+import Form from './components/Scheduler/Form';
 import Callback from './components/Callback';
 import Login from './components/Logging/Login';
 import Logout from './components/Logging/Logout';
@@ -20,6 +21,7 @@ const Root = () => {
         <Route path="/" component={Display}/>
         <Route path="/upload" component={Upload} onEnter={requireAuth} />
         <Route path="/screen" component={Screen} onEnter={requireAuth} />
+        <Route path="/form" component={Form} onEnter={requireAuth} />
         <Route path="/scheduler" component={Scheduler} onEnter={requireAuth} />
         <Route path="/callback" component={Callback} />
         <Route path="/login" component={Login} />
