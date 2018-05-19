@@ -11,24 +11,19 @@ class Scheduler extends Component {
     super(props);
 
     this.state = {
+      auto: false,
+      name: '',
       startDate: moment(),
       endDate: moment()
     };
 
-    this.handleStartChange = this.handleStartChange.bind(this);
-    this.handleEndChange = this.handleEndChange.bind(this);
+    this.setField = this.setField.bind(this);
   }
 
-  handleStartChange(date) {
-    this.setState({
-      startDate: date
-    });
-  }
-
-  handleEndChange(date) {
-    this.setState({
-      endDate: date
-    });
+  setField (e) {
+    console.log(e.target.name);
+    console.log(e.target.value);
+    this.setState({[e.target.name]: e.target.value})
   }
 
   render() {
@@ -40,20 +35,27 @@ class Scheduler extends Component {
         <hr/>
 
         <Upload />
+        <form onChange={this.setField}>
+          <h3>Content Details</h3>
+          <p>
+          <input type="text" name="name" placeholder="Content Name" />
+          Auto Schedule <input type="checkbox" name="auto" />
+          </p>
+          Start Date
+          <DatePicker
+            dateFormat="YYYY/MM/DD"
+            name="startDate"
+            selected={this.state.startDate}
+            onChange={this.setField}
+          />
 
-        Start Date
-        <DatePicker
-          dateFormat="YYYY/MM/DD"
-          selected={this.state.startDate}
-          onChange={this.handleStartChange}
-        />
-
-        End Date
-        <DatePicker
-          dateFormat="YYYY/MM/DD"
-          selected={this.state.endDate}
-          onChange={this.handleEndChange}
-        />
+          End Date
+          <DatePicker
+            dateFormat="YYYY/MM/DD"
+            selected={this.state.endDate}
+            onChange={this.setField}
+          />
+        </form>
 
       </div>
     );
