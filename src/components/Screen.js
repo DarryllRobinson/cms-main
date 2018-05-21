@@ -31,19 +31,40 @@ class Screen extends Component {
   };
 
   componentDidMount() {
+    /*const cld = cloudinary.Cloudinary.new({ cloud_name: 'flycrow' });
+    let list = cld.v2.api.resources_by_tag("fcm", function(error, result){console.log(result); });
+    console.log('cld: ', cld);*/
+
+    var cloudinary1 = require('cloudinary').v2;
+    //console.log('cloudinary1: ', cloudinary1.api.resources_by_tag('fcm'));
+    console.log('cloudinary1: ', cloudinary1);
+/*
+    var r;
+    var listAllResources = allCursors(cloudinary.api.resources, (result)=> result.resources);
+
+    listAllResources((resources)=> {console.log("got " + resources.length + " resources");r = resources;});
+
     //this.getVideos();
     // this.getIPstack(); // For when we want the device location info
-    //this.getPlaylist();
+    //this.getPlaylist();*/
   }
 
   getPlaylist() {
+
+    /*let cloudinary = require('cloudinary');
+    let list = cloudinary.v2.api.resources_by_tag("fcm", function(error, result){console.log(result); });*/
+
     const cld = cloudinary.Cloudinary.new({ cloud_name: 'flycrow' });
+    //let list = cld.v2.api.resources_by_tag("fcm", function(error, result){console.log(result); });
+    //console.log('list: ', list);
     const player = cld.videoPlayer('example-player', {
       playedEventTimes: [1]
     });
 
     player.playlistByTag(this.state.tag, {
-      //sourceParams: { angle: 13 },
+      /*sourceParams: { overlay: "fcm-icon1", opacity: 80,
+          effect: "brightness:200", width: 100, gravity: "north_east",
+          x: 20, y: 10 },*/
       autoAdvance: 0,
       repeat: true
     }).then(function(player)
@@ -57,7 +78,7 @@ class Screen extends Component {
       });
 
       player.maximize();
-      
+
   }
 
   getIPstack() {
