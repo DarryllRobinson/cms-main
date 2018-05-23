@@ -15,6 +15,14 @@ db.serialize(function() {
 });
 
 db.serialize(function() {
+  db.run('CREATE TABLE IF NOT EXISTS `Content` ( ' +
+           '`id` INTEGER NOT NULL, ' +
+           '`name` TEXT NOT NULL, ' +
+           '`filename` TEXT NOT NULL, ' +
+           'PRIMARY KEY(`id`) )');
+});
+
+db.serialize(function() {
   db.run('CREATE TABLE IF NOT EXISTS `Unit` ( ' +
            '`id` INTEGER NOT NULL, ' +
            '`screen_size` INTEGER NOT NULL, ' +

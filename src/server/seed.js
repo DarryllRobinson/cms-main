@@ -24,6 +24,29 @@ db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='User'", (err
   }
 });
 
+// Seed Content table
+db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Content'", (error, table) => {
+  if (error) {
+    throw new Error(error);
+  }
+
+  if (table) {
+    db.serialize(function() {
+      let contentId;
+      db.run("INSERT INTO content (name, filename) " +
+        "VALUES ('Star', 'C:\Users\drobinson\Documents\projects\cms-main\src\components\videos\Star - 6962.mp4')");
+        db.run("INSERT INTO content (name, filename) " +
+          "VALUES ('Snowy', 'C:\Users\drobinson\Documents\projects\cms-main\src\components\videos\Snowy Trees - 7328')"), function(error) {
+            if (error) {
+              throw new Error(error);
+            }
+            contentId = this.contentId;
+          };
+
+    });
+  }
+});
+
 // Seed Unit table
 db.get("SELECT name FROM sqlite_master WHERE type='table' AND name='Unit'", (error, table) => {
   if (error) {

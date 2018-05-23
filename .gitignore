@@ -5,9 +5,11 @@
 
 # testing
 /coverage
+/src/components/videos
 
 # production
 /build
+/src/components/videos
 
 # misc
 .DS_Store

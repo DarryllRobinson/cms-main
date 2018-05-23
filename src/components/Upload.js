@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import Nav from './Nav';
 
 class Upload extends Component {
   constructor(props) {
@@ -39,6 +40,9 @@ class Upload extends Component {
 
     return (
       <div>
+        <Nav />
+        <h3 className="text-center">Upload your content</h3>
+        <hr/>
 
         <div className="col-sm-12">
           <div className="jumbotron text-center"><input placeholder="Content Tag" onChange={this.handleTagChange}></input>

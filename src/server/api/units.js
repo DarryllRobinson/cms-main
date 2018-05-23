@@ -21,7 +21,7 @@ unitsRouter.param('unitId', (req, res, next, unitId) => {
 });
 
 unitsRouter.get('/', (req, res, next) => {
-  db.all('SELECT * FROM unit WHERE unit.is_current_unit = 1',
+  db.all('SELECT * FROM unit WHERE unit.is_active_unit = 1',
     (err, units) => {
       if (err) {
         next(err);
@@ -119,7 +119,7 @@ unitsRouter.put('/:unitId', (req, res, next) => {
 });
 
 unitsRouter.delete('/:unitId', (req, res, next) => {
-  const sql = 'UPDATE unit SET is_current_unit = 0 WHERE unit.id = $unitId';
+  const sql = 'UPDATE unit SET is_active_unit = 0 WHERE unit.id = $unitId';
   const values = {$unitId: req.params.unitId};
 
   db.run(sql, values, (error) => {
