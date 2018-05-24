@@ -31,6 +31,11 @@ class Nav extends Component {
              ( isLoggedIn() ) ? <Link to="/scheduler">Scheduler</Link> :  ''
             }
           </li>
+          <li>
+            {
+             ( isLoggedIn() ) ? <a href="https://docs.google.com/spreadsheets/d/1B70FvJwk99np5vxwAQKUF2vTOE391jLLOnrx7dtZhKk/edit?pli=1#gid=0" target="_blank">Boss</a> :  ''
+            }
+          </li>
         </ul>{/*
         <ul className="nav navbar-nav navbar-right">
           <li>
