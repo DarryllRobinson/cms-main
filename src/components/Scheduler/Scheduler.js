@@ -22,7 +22,8 @@ class Scheduler extends Component {
     };
 
     this.handleChange = this.handleChange.bind(this);
-    this.handleDateChange = this.handleDateChange.bind(this);
+    this.handleChangeStart = this.handleChangeStart.bind(this);
+    this.handleChangeEnd = this.handleChangeEnd.bind(this);
     this.uploadWidget = this.uploadWidget.bind(this);
   }
 
@@ -40,8 +41,12 @@ class Scheduler extends Component {
     ]);
   }
 
-  handleDateChange(date) {
+  handleChangeStart(date) {
     this.setState({ startDate: date })
+  }
+
+  handleChangeEnd(date) {
+    this.setState({ endDate: date })
   }
 
   prepareTags() {
@@ -99,7 +104,7 @@ class Scheduler extends Component {
             name="startDate"
             todayButton={"Today"}
             selected={this.state.startDate}
-            onChange={this.handleDateChange}
+            onChange={this.handleChangeStart}
             showTimeSelect
             timeCaption="Time"
             timeFormat="HH:mm"
@@ -107,7 +112,8 @@ class Scheduler extends Component {
             showMonthDropdown
             showYearDropdown
             showWeekNumbers
-             />
+            selectsStart
+          />
 
           End Date and Time
           <DatePicker
@@ -115,7 +121,7 @@ class Scheduler extends Component {
             name="endDate"
             todayButton={"Today"}
             selected={this.state.endDate}
-            onChange={this.handleDateChange}
+            onChange={this.handleChangeEnd}
             showTimeSelect
             timeCaption="Time"
             timeFormat="HH:mm"
@@ -123,7 +129,8 @@ class Scheduler extends Component {
             showMonthDropdown
             showYearDropdown
             showWeekNumbers
-             />
+            selectsEnd
+          />
 
              <div className="jumbotron text-center">{/*<input placeholder="Content Tag" onChange={this.handleTagChange}></input>*/}
                <button onClick={this.uploadWidget} className="btn btn-lg btn-info">Upload Content</button>
