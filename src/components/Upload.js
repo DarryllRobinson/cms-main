@@ -23,7 +23,7 @@ class Upload extends Component {
     window.cloudinary.openUploadWidget( {
       cloud_name: 'flycrow',
       upload_preset: 'ubx3ytwg',
-      tags: this.props.tag, //.push('TBM'),
+      tags: [ 'TBM' ], //this.props.tag, //.push('TBM'),
       sources: ['local', 'url']
     },
       function(error, result) {

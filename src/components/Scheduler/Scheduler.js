@@ -28,6 +28,16 @@ class Scheduler extends Component {
 
   handleChange(e) {
     this.setState({[e.target.name]: e.target.value})
+    console.log('logging: ',
+    [
+      this.state.auto.toString(),
+      this.state.name.toString(),
+      this.state.startDate.format(),
+      this.state.endDate.format(),
+      this.state.industry.toString(),
+      this.state.category.toString(),
+      'TBM'
+    ]);
   }
 
   handleDateChange(date) {
@@ -39,18 +49,20 @@ class Scheduler extends Component {
   }
 
   uploadWidget = () => {
+    let myTags = [
+      /*this.state.auto.toString(),
+      this.state.name.toString(),
+      this.state.startDate.format(),
+      this.state.endDate.format(),
+      this.state.industry.toString(),
+      this.state.category.toString(),*/
+      'TBM'
+    ];
+
     window.cloudinary.openUploadWidget( {
       cloud_name: 'flycrow',
       upload_preset: 'ubx3ytwg',
-      tags: [
-        this.state.auto.toString(),
-        this.state.name.toString(),
-        this.state.startDate.format(),
-        this.state.endDate.format(),
-        this.state.industry.toString(),
-        this.state.category.toString(),
-        'TBM'
-      ],
+      tags: myTags,
       sources: ['local', 'url']
     },
       function(error, result) {
@@ -62,7 +74,6 @@ class Scheduler extends Component {
 
     return (
       <div>
-      {console.log('logging: ', this.state.auto.toString(), this.state.name.toString())}
         <Nav />
         <h3 className="text-center">Scheduler</h3>
         <hr/>
